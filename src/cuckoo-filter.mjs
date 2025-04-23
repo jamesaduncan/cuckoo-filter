@@ -1,5 +1,4 @@
 
-import * as cbor from 'cbor2';
 import { Bucket } from "./bucket.mjs"
 
 import { Fingerprint } from "./fingerprint.mjs";
@@ -235,6 +234,7 @@ export class CuckooFilter {
   static fromJSON (obj) {
     return new CuckooFilter(obj)
   }
+/*
   toCBOR () {
     return Buffer.from(cbor.encode(this.toJSON()))
   }
@@ -242,4 +242,5 @@ export class CuckooFilter {
     let obj = cbor.decode(buf)
     return CuckooFilter.fromJSON(obj)
   }
+    */
 }
