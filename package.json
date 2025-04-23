@@ -15,7 +15,7 @@
     "url": "https://github.com/vijayee/cuckoo-filter.git"
   },
   "dependencies": {
-    "borc": "2.0.4",
+    "cbor2": "^1.12.0",
     "fnv32": "0.0.1"
   },
   "devDependencies": {

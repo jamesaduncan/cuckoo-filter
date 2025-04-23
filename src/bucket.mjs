@@ -1,9 +1,9 @@
-'use strict'
-const Fingerprint = require('./fingerprint')
-const util = require('./util')
+import { Fingerprint } from "./fingerprint.mjs";
+import * as util from "./util.mjs";
+
 let _contents = new WeakMap()
 
-module.exports = class Bucket {
+export class Bucket {
   constructor (size) {
     if (typeof size === 'object') {
       if (size.contents) {

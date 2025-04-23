@@ -1,9 +1,14 @@
-const crypto = require('crypto')
-const CuckooFilter = require('../src/cuckoo-filter')
-const expect = require('chai').expect
+import { CuckooFilter } from "../src/cuckoo-filter.mjs";
+import { ScalableCuckooFilter } from "../src/scalable-cuckoo-filter.mjs"
+import * as chai  from "chai";
+import * as foo from 'node:crypto'
+
+const crypto = foo.default;
+const expect = chai.default.expect;
+
 describe('Test Cuckoo Filter', function () {
   let keys =[]
-  let cuckoo = new CuckooFilter(1500, 6 , 4)
+  let cuckoo = new ScalableCuckooFilter(1500, 6 , 4)
   let cuckoo2
   it('Add 1500 keys', function() {
     for(let i = 0; i < 1500; i++ ) {

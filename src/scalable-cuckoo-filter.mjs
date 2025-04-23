@@ -1,13 +1,15 @@
 'use strict'
-const cbor = require('cbor-js')
-const CuckooFilter = require('./cuckoo-filter')
+import * as cbor from 'cbor2'
+
+import { CuckooFilter } from "./cuckoo-filter.mjs";
+
 let _filterSeries = new WeakMap()
 let _scale = new WeakMap()
 let _bSize = new WeakMap()
 let _cfSize = new WeakMap()
 let _fpSize = new WeakMap()
 
-module.exports = class ScalableCuckooFilter {
+export class ScalableCuckooFilter {
   constructor (cfSize, bSize, fpSize, scale) {
     if (typeof cfSize === 'object') {
       if (!isNaN(cfSize.cfSize)) {

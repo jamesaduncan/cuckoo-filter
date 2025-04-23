@@ -1,7 +1,7 @@
-'use strict'
-const util = require('./util')
+import * as util from "./util.mjs";
+
 let _fp = new WeakMap()
-module.exports = class Fingerprint {
+export class Fingerprint {
   constructor (buf, fpSize) {
     if (!Buffer.isBuffer(buf) && typeof buf === 'object') {
       if (buf.fp) {

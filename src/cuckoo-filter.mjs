@@ -1,15 +1,18 @@
-'use strict'
-const cbor = require('borc')
-const Bucket = require('./bucket')
-const Fingerprint = require('./fingerprint')
-const util = require('./util')
+
+import * as cbor from 'cbor2';
+import { Bucket } from "./bucket.mjs"
+
+import { Fingerprint } from "./fingerprint.mjs";
+import * as util from "./util.mjs";
+
 const maxCuckooCount = 500
 let _bSize = new WeakMap()
 let _cfSize = new WeakMap()
 let _fpSize = new WeakMap()
 let _buckets = new WeakMap()
 let _count = new WeakMap()
-module.exports = class CuckooFilter {
+
+export class CuckooFilter {
   constructor (cfSize, bSize, fpSize) {
     if (!Buffer.isBuffer(cfSize) && typeof cfSize === 'object') {
       if (!isNaN(cfSize.cfSize)) {
@@ -236,7 +239,7 @@ module.exports = class CuckooFilter {
     return Buffer.from(cbor.encode(this.toJSON()))
   }
   static fromCBOR (buf) {
-    let obj = cbor.decodeFirst(buf)
+    let obj = cbor.decode(buf)
     return CuckooFilter.fromJSON(obj)
   }
 }
